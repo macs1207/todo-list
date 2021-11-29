@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig:
-    SECRET_KEY = "SECRETKEY"
+    SECRET_KEY = 'SECRETKEY'
 
 
 class DevelopmentConfig(BaseConfig):

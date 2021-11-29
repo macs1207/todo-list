@@ -7,7 +7,7 @@ from .model import db
 
 migrate = Migrate()
 
-def create_app(config_name="development"):
+def create_app(config_name='development'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
 
