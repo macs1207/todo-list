@@ -1,11 +1,12 @@
-from flask import Flask, Blueprint
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 from .config import config
 from .api import api_bp
 from .model import db
 
 migrate = Migrate()
+jwt = JWTManager()
 
 def create_app(config_name='development'):
     app = Flask(__name__)
@@ -15,5 +16,6 @@ def create_app(config_name='development'):
 
     db.init_app(app)
     migrate.init_app(app, db)
+    jwt.init_app(app)
 
     return app
