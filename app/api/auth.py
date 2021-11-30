@@ -13,12 +13,12 @@ def registration():
     
     if UserRepo.create_user(username, password):
         return {
-            'status': 'success',
+            'status': 'success'
         }, 201
     else:
         return {
             'status': 'fail',
-            'detail': 'The user already exists.',
+            'detail': 'The user already exists.'
         }, 409
 
 
@@ -34,7 +34,7 @@ def auth():
             return {
                 'status': 'success',
                 'data': {
-                    'access_token': access_token,
+                    'access_token': access_token
                 }
             }, 200
         else:
@@ -45,5 +45,5 @@ def auth():
     else:
         return {
             'status': 'fail',
-            'detail': 'The user is not exist.',
+            'detail': 'The user is not exist.'
         }, 401
