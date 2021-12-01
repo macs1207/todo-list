@@ -27,10 +27,11 @@ def auth():
     username = request.json['username']
     password = request.json['password']
     
-    query = User.find_user_by_username(username)
-    if query:
-        if bcrypt.hashpw(password, query.password) == query.password:
-            access_token = create_access_token({'uid': query.uid, 'username': query.username})
+    query_user = User.find_user_by_username(username)
+    if query_user:
+        if User.validate_password(password, query_user.password):
+            access_token = create_access_token(
+                {'uid': query_user.uid, 'username': query_user.username})
             return {
                 'status': 'success',
                 'data': {
