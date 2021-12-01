@@ -8,9 +8,15 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/registration', methods=['POST'])
 def registration():
-    username = request.json['username']
-    password = request.json['password']
-    
+    try:
+        username = request.json['username']
+        password = request.json['password']
+    except KeyError:
+        return {
+            'status': 'fail',
+            'detail': 'Missing params.'
+        }, 400
+
     if User.create_user(username, password):
         return {
             'status': 'success'
@@ -24,9 +30,15 @@ def registration():
 
 @auth_bp.route('/auth', methods=['POST'])
 def auth():
-    username = request.json['username']
-    password = request.json['password']
-    
+    try:
+        username = request.json['username']
+        password = request.json['password']
+    except KeyError:
+        return {
+            'status': 'fail',
+            'detail': 'Missing params.'
+        }, 400
+
     query_user = User.find_user_by_username(username)
     if query_user:
         if User.validate_password(password, query_user.password):
