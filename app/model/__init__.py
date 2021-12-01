@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import bcrypt
 
 db = SQLAlchemy()
 
@@ -19,6 +20,22 @@ class User(db.Model):
     def __init__(self, username, password):
         self.username = username
         self.password = password
+    
+    @classmethod
+    def create_user(cls, username, password):
+        query = cls.query.filter_by(username=username).first()
+        if query:
+            return False
+
+        hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
+        user = cls(username, hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        return True
+    
+    @classmethod
+    def find_user_by_username(cls, username):
+        return cls.query.filter_by(username=username).first()
 
 
 class Task(db.Model):

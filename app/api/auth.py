@@ -1,7 +1,7 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
+from flask_jwt_extended import create_access_token
 import bcrypt
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-from ..repository.user import UserRepo
+from ..model import User
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -11,7 +11,7 @@ def registration():
     username = request.json['username']
     password = request.json['password']
     
-    if UserRepo.create_user(username, password):
+    if User.create_user(username, password):
         return {
             'status': 'success'
         }, 201
@@ -27,10 +27,10 @@ def auth():
     username = request.json['username']
     password = request.json['password']
     
-    query = UserRepo.find_user_by_username(username)
+    query = User.find_user_by_username(username)
     if query:
         if bcrypt.hashpw(password, query.password) == query.password:
-            access_token = create_access_token(query.username)
+            access_token = create_access_token({'uid': query.uid, 'username': query.username})
             return {
                 'status': 'success',
                 'data': {
