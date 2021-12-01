@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-sqlalchemy = "*"
-flask-restful = "*"
 flask-migrate = "*"
 py-bcrypt = "*"
 flask-jwt-extended = "*"
