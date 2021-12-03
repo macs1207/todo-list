@@ -31,3 +31,11 @@
 
 - Run image
 `> docker run -p 5000:5000 todo-list`
+
+## Testing
+
+- Set environment variables
+`> export FLASK_APP=main.py`
+
+- Run testing
+`flask test`
