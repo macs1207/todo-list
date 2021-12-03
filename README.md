@@ -11,31 +11,61 @@
 ### pipenv
 
 - Install dependency
-`> pipenv install`
+
+```bash
+> pipenv install
+```
 
 - Set environment variables
-`> export FLASK_APP=main.py`
+
+```bash
+> export FLASK_APP=main.py
+```
 
 - Database migration
-`> flask db init`
-`> flask db migrate`
-`> flask db upgrade`
+
+```bash
+> flask db init
+```
+
+```bash
+> flask db migrate
+```
+
+```bash
+> flask db upgrade
+```
 
 - Run server
-`> flask run --host 0.0.0.0 --port 5000`
+
+```bash
+> flask run --host 0.0.0.0 --port 5000
+```
 
 ### Docker
 
 - Build image
-`> docker build -t todo-list .`
+
+```bash
+> docker build -t todo-list .
+```
 
 - Run image
-`> docker run -p 5000:5000 todo-list`
+
+```bash
+> docker run -p 5000:5000 todo-list
+```
 
 ## Testing
 
 - Set environment variables
-`> export FLASK_APP=main.py`
+
+```bash
+> export FLASK_APP=main.py
+```
 
 - Run testing
-`flask test`
+
+```bash
+> flask test
+```
