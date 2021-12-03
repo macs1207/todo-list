@@ -43,7 +43,7 @@ def create_task():
     Task.create_task(title, content, done, expire_at_parse, user_id)
     return {
         'status': 'success'
-    }
+    }, 201
 
 
 # @task_bp.route('/task/<int:id>', methods=['GET'])

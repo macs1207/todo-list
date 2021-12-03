@@ -16,6 +16,11 @@ def registration():
             'status': 'fail',
             'detail': 'Missing params.'
         }, 400
+    if len(username) not in range(8, 25) or len(password) not in range(8, 25):
+        return {
+            'status': 'fail',
+            'detail': 'Invalid username or password.'
+        }, 400
 
     if User.create_user(username, password):
         return {
