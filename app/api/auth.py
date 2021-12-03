@@ -38,6 +38,11 @@ def auth():
             'status': 'fail',
             'detail': 'Missing params.'
         }, 400
+    except TypeError:
+        return {
+            'status': 'fail',
+            'detail': 'Missing params.'
+        }, 400
 
     query_user = User.find_user_by_username(username)
     if query_user:
