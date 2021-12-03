@@ -4,6 +4,10 @@
 
 - Python 3.9
 
+## API Documentation
+
+[Postman documentation](https://documenter.getpostman.com/view/6932425/UVJfkbKV)
+
 ## Usage
 
 > URL: [http://127.0.0.1:5000](http://127.0.0.1:5000)
